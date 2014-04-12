@@ -36,27 +36,27 @@ AI.prototype.search = function(depth, alpha, beta, positions, cutoffs) {
       var newGrid = this.grid.clone();
       if (newGrid.move(direction).moved) {
         positions++;
-        if (newGrid.isWin()) {
-          return { move: direction, score: 10000, positions: positions, cutoffs: cutoffs };
-        }
+        //if (newGrid.isWin()) {
+        //  return { move: direction, score: 10000, positions: positions, cutoffs: cutoffs };
+        //}
         var newAI = new AI(newGrid);
 
         if (depth == 0) {
           result = { move: direction, score: newAI.eval() };
         } else {
           result = newAI.search(depth-1, bestScore, beta, positions, cutoffs);
-          if (result.score > 9900) { // win
-            result.score--; // to slightly penalize higher depth from win
-          }
+          //if (result.score > 9900) { // win
+          //  result.score--; // to slightly penalize higher depth from win
+          //}
           positions = result.positions;
           cutoffs = result.cutoffs;
         }
 
-        if (result.score > bestScore) {
+        if (result.score < bestScore) {
           bestScore = result.score;
           bestMove = direction;
         }
-        if (bestScore > beta) {
+        if (bestScore < beta) {
           cutoffs++
           return { move: bestMove, score: beta, positions: positions, cutoffs: cutoffs };
         }
@@ -112,7 +112,7 @@ AI.prototype.search = function(depth, alpha, beta, positions, cutoffs) {
     //*/
 
     // now just pick out the most annoying moves
-    var maxScore = Math.max(Math.max.apply(null, scores[2]), Math.max.apply(null, scores[4]));
+    var maxScore = Math.min(Math.min.apply(null, scores[2]), Math.min.apply(null, scores[4]));
     for (var value in scores) { // 2 and 4
       for (var i=0; i<scores[value].length; i++) {
         if (scores[value][i] == maxScore) {
@@ -135,10 +135,10 @@ AI.prototype.search = function(depth, alpha, beta, positions, cutoffs) {
       positions = result.positions;
       cutoffs = result.cutoffs;
 
-      if (result.score < bestScore) {
+      if (result.score > bestScore) {
         bestScore = result.score;
       }
-      if (bestScore < alpha) {
+      if (bestScore > alpha) {
         cutoffs++;
         return { move: null, score: alpha, positions: positions, cutoffs: cutoffs };
       }
@@ -154,10 +154,10 @@ AI.prototype.search = function(depth, alpha, beta, positions, cutoffs) {
       positions = result.positions;
       cutoffs = result.cutoffs;
 
-      if (result.score < bestScore) {
+      if (result.score > bestScore) {
         bestScore = result.score;
       }
-      if (bestScore < alpha) {
+      if (bestScore > alpha) {
         //console.log('cutoff')
         cutoffs++;
         return { move: bestMove, score: bestScore, positions: positions, cutoffs: cutoffs };
@@ -183,10 +183,10 @@ AI.prototype.search = function(depth, alpha, beta, positions, cutoffs) {
             positions = result.positions;
             cutoffs = result.cutoffs;
 
-            if (result.score < bestScore) {
+            if (result.score > bestScore) {
               bestScore = result.score;
             }
-            if (bestScore < alpha) {
+            if (bestScore > alpha) {
               //console.log('cutoff')
               cutoffs++;
               return { move: bestMove, score: bestScore, positions: positions, cutoffs: cutoffs };
@@ -212,7 +212,7 @@ AI.prototype.iterativeDeep = function() {
   var depth = 0;
   var best;
   do {
-    var newBest = this.search(depth, -10000, 10000, 0 ,0);
+    var newBest = this.search(depth, 10000, -10000, 0 ,0);
     if (newBest.move == -1) {
       //console.log('BREAKING EARLY');
       break;
