@@ -36,9 +36,9 @@ AI.prototype.search = function(depth, alpha, beta, positions, cutoffs) {
       var newGrid = this.grid.clone();
       if (newGrid.move(direction).moved) {
         positions++;
-        //if (newGrid.isWin()) {
-        //  return { move: direction, score: 10000, positions: positions, cutoffs: cutoffs };
-        //}
+        if (!newGrid.movesAvailable()) {
+          return { move: direction, score: 0, positions: positions, cutoffs: cutoffs };
+        }
         var newAI = new AI(newGrid);
 
         if (depth == 0) {
