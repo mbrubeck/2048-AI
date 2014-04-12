@@ -32,7 +32,6 @@ function GameManager(size, InputManager, Actuator) {
 GameManager.prototype.restart = function () {
   this.actuator.restart();
   this.running = false;
-  this.actuator.setRunButtonEnabled(true);
   this.actuator.setRunButton('Auto-run');
   this.setup();
 };
@@ -47,6 +46,8 @@ GameManager.prototype.setup = function () {
   this.score        = 0;
   this.over         = false;
   this.won          = false;
+
+  this.actuator.setRunButtonEnabled(true);
 
   // Update the actuator
   this.actuate();
