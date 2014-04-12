@@ -14,7 +14,7 @@
 
   <meta property="og:title" content="2048 game"/>
   <meta property="og:site_name" content="2048 game"/>
-  <meta property="og:description" content="Join the numbers and get to the 2048 tile! Careful: this game is extremely addictive!"/>
+  <meta property="og:description" content="Artificial intelligence to play 2048 as badly as possible"/>
   <meta property="og:image" content="http://gabrielecirulli.github.io/2048/meta/og_image.png"/>
 </head>
 <body>
@@ -23,7 +23,7 @@
       <h1 class="title">2048</h1>
       <div class="score-container">0</div>
     </div>
-    <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+    <p class="game-intro">Try to lose the game as quickly as possible to get a low score.</p>
 
     <div class='controls'>
       <div id='hint-button-container'>
@@ -77,24 +77,21 @@
     </div>
 
     <p class="game-explanation">
-      <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
+    <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they merge into one! <strong>Try to fill up the board quickly to get the lowest score possible</strong>.  Press the "Auto-play" button to let the AI play.  Can you do worse than the computer?
     </p>
     <hr>
     <p>
-    Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
+    2048 created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
     </p>
     <p>
     AI solver by <a href="https://github.com/ov3y/2048-AI">Matt Overlan</a>
     </p>
+    <p>
+    Tweaked to search for low scores by <a href="https://github.com/mbrubeck/2048-AI">Matt Brubeck</a>
+    </p>
     <div class="sharing">
-      <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out 2048, a game where you join numbers to score high! #2048game #2048ai" data-via="gabrielecirulli">Tweet</a>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-text="An AI that tries to play 2048 as badly as possible. #2048game #2048ai" data-via="mbrubeck">Tweet</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-      <span class="btc-donate">
-        <a href="bitcoin:1Ec6onfsQmoP9kkL3zkpB6c5sA4PVcXU2i">
-          <img src="meta/icon_bitcoin.png">Donate
-        </a>
-        <span class="address"><code>1Ec6onfsQmoP9kkL3zkpB6c5sA4PVcXU2i</code></span>
-      </span>
     </div>
   </div>
 
