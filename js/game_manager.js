@@ -32,6 +32,7 @@ function GameManager(size, InputManager, Actuator) {
 GameManager.prototype.restart = function () {
   this.actuator.restart();
   this.running = false;
+  this.actuator.setRunButtonEnabled(true);
   this.actuator.setRunButton('Auto-run');
   this.setup();
 };

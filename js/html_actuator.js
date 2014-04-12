@@ -114,6 +114,7 @@ HTMLActuator.prototype.message = function (won) {
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
 
+  this.setRunButtonEnabled(false);
   this.clearContainer(this.sharingContainer);
   this.sharingContainer.appendChild(this.scoreTweetButton());
   twttr.widgets.load();
@@ -140,6 +141,10 @@ HTMLActuator.prototype.scoreTweetButton = function () {
 
 HTMLActuator.prototype.showHint = function(hint) {
   document.getElementById('feedback-container').innerHTML = ['↑','→','↓','←'][hint];
+}
+
+HTMLActuator.prototype.setRunButtonEnabled = function(val) {
+  document.getElementById('run-button').disabled = !val;
 }
 
 HTMLActuator.prototype.setRunButton = function(message) {

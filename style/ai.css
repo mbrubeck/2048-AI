@@ -4,6 +4,10 @@
   overflow: auto;
 }
 
+.ai-button[disabled] {
+  opacity: 0.4;
+}
+
 .ai-button, #feedback-container {
   font-size: xx-large;
 }
